@@ -1,0 +1,32 @@
+---
+import Link from '../components/Link.astro'
+---
+<div x-data="{ showmenu: false }" class="p-4 lg:static w-full bg-amber-950 text-stone-200" >
+    <div id="navbar" class="flex flex-row justify-between">
+        <div id="logo" class="">
+            <a href="#link1">Site logo</a>
+        </div>
+        <nav id="desktopmenu" class="hidden lg:block">
+            <ul class="flex flex-row gap-4">
+                <li class=""><Link href="#billeder">Københavnerbilleder</Link></li><!-- alternativt: lav et <a href="">Link</a>, hvis du ikke vil bruge Link.astro komponenten -->
+                <li class=""><Link href="#indhold">Bogens indhold</Link></li>
+                <li class=""><Link href="#forfatter">Forfatteren</Link></li>
+                <li class=""><Link href="#kobnu">Køb nu!</Link></li>
+            </ul>
+        </nav>
+        <button id="burgermenu" class="lg:hidden" x-on:click="showmenu = ! showmenu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+          </button>
+    </div>
+        <nav id="mobilmenu" class="flex flex-col content-center pt-4" 
+        x-show="showmenu" x-transition x-on:click="showmenu = false" x-on:click.outside="showmenu = false">
+        <ul>
+            <li class="text-center py-2 border-y-2"><Link href="#billeder" >Københavnerbilleder</Link></li>
+            <li class="text-center py-2 border-b-2"><Link href="#indhold" >Bogens indhold</Link></li>
+            <li class="text-center py-2 border-b-2"><Link href="#forfatter" >Forfatteren</Link></li>
+            <li class="text-center py-2 border-b-2"><Link href="#kobnu" >Køb nu!</Link></li>  
+        </ul>
+        </nav>
+</div>
+
